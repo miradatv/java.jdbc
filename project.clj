@@ -25,7 +25,7 @@
                  [org.postgresql/postgresql "9.4-1201-jdbc41"]
                  [org.xerial/sqlite-jdbc "3.8.11.1"]
                  ;; if you have the MS driver in your local repo
-                 [sqljdbc4 "4.0"]
+                 ;[sqljdbc4 "4.0"]
                  ]
   :profiles {:1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}
              :1.5 {:dependencies [[org.clojure/clojure "1.5.1"]]}
