@@ -659,10 +659,7 @@ compatibility but it will be removed before a 1.0.0 release." }
   (let [result-set-fn (or result-set-fn (if as-arrays? vec doall))]
     (if (instance? java.sql.ResultSet rs-or-value)
       ((^{:once true} fn* [rs]
-        (result-set-fn (if as-arrays?
-                         (cons (first rs)
-                               (map row-fn (rest rs)))
-                         (map row-fn rs))))
+        (result-set-fn (map row-fn rs)))
        (result-set-seq rs-or-value :identifiers identifiers :as-arrays? as-arrays?))
       rs-or-value)))
 
@@ -854,10 +851,7 @@ compatibility but it will be removed before a 1.0.0 release." }
     (db-query-with-resultset db sql-params-vector
       (^{:once true} fn* [rset]
        ((^{:once true} fn* [rs]
-         (result-set-fn (if as-arrays?
-                          (cons (first rs)
-                                (map row-fn (rest rs)))
-                          (map row-fn rs))))
+         (result-set-fn (map row-fn rs)))
         (result-set-seq rset :identifiers identifiers :as-arrays? as-arrays?))))))
 
 (defn execute!
